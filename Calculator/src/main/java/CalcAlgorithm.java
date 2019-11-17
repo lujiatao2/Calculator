@@ -57,6 +57,7 @@ class CalcAlgorithm {
             case DIVIDE:
             case EQUAL:
                 DISPLAY_VALUE = handleOperator();
+                DISPLAY_VALUE = DISPLAY_VALUE.endsWith(".0") ? DISPLAY_VALUE.substring(0, DISPLAY_VALUE.length() - 2) : DISPLAY_VALUE;//去掉整数后面的小数点和零
                 LAST_OPERATOR_BUTTON = calcButton;
                 break;
             case RESET:
@@ -65,7 +66,6 @@ class CalcAlgorithm {
                 LAST_VALUE = 0;
         }
         LAST_BUTTON = DISPLAY_VALUE.equals(DIVIDE_ZREO) ? CalcButton.RESET : calcButton;//除数为零重置LAST_BUTTON为CalcButton.RESET
-        DISPLAY_VALUE = DISPLAY_VALUE.endsWith(".0") ? DISPLAY_VALUE.substring(0, DISPLAY_VALUE.length() - 2) : DISPLAY_VALUE;//去掉整数后面的小数点和零
         return DISPLAY_VALUE;
     }
 
